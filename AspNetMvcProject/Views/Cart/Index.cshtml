@@ -1,0 +1,108 @@
+﻿@model SampleEcommerce.MvcWeb.Models.Cart
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+
+<div id="product-details" class="container pb-5">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h2>Alışveriş Sepeti</h2>
+            <hr />
+
+            @if (Model.CartLines.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Miktar</th>
+                            <th>Ürün Adı</th>
+                            <th>Ürün Fiyat</th>
+                            <th>Toplam Fiyat</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartLines)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/theme/img/@item.Product.Image" width="70" />
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    @item.Product.Name
+                                </td>
+                                <td>
+                                    @item.Product.Price
+                                </td>
+                                <td>
+                                    @((item.Product.Price * item.Quantity).ToString("c"))
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                                    {
+                                        @Html.Hidden("Id", item.Product.Id)
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt" style="font-size: 18px;"></i>
+                                            Sil
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"></td>
+                            <td>
+                                @Model.Total().ToString("c")
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <br />
+
+                <div class="text-center">
+                    <a href="/Home/List" class="btn btn-primary">
+                        <i class="fas fa-angle-left" style="font-size: 15px;"></i>
+                        Alışverişe Devam Et
+                    </a>
+
+                    <a href="/Cart/CheckOut" class="btn btn-primary">
+                        Alışverişi Tamamla
+                        <i class="fas fa-angle-right" style="font-size: 15px;"></i>
+                    </a>
+                </div>
+
+
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle" style="font-size: 24px;"></i>
+                    Alışveriş sepetinizde ürün bulunmamaktadır.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+
+

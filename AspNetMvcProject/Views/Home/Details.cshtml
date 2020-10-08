@@ -1,0 +1,135 @@
+﻿@using SampleEcommerce.MvcWeb.Entity;
+@model Product
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div id="product-details" class="container pb-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/theme/img/@Model.Image" class="img-fluid w-100">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <br><br><br><br>
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col-md-12">
+
+                    @if (Model.IsApproved)
+                    {
+                        <span class="badge badge-primary">Ürün Stokta</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Ürün Stokta Yok</span> 
+                    }
+
+                    <span class="product-number">#2365656</span>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    <div id="description">
+                        @Model.Description
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-2">
+                    <i class="fas fa-star" style="font-size: 16px;"></i>
+                    <i class="fas fa-star" style="font-size: 16px;"></i>
+                    <i class="fas fa-star" style="font-size: 16px;"></i>
+                    <i class="fas fa-star" style="font-size: 16px;"></i>
+                    <i class="fas fa-star-half-alt" style="font-size: 16px;"></i>
+                    &nbsp; <span class="badge badge-success">59</span>
+                </div>
+
+                <div id="write-review" class="col-md-4 mt-2">
+                    <a href="#">
+                        Yorum yapınız
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 mt-1">
+                    <h4 id="product-price" style="font-size: 30px; color: red">₺ @Model.Price</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                     
+                    @using (Html.BeginForm("AddToCart","Cart"))
+                    {
+                        @Html.HiddenFor(i => i.Id)
+                        <button type="submit" class="btn btn-success">
+                        <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                             Sepete Ekle
+                         </button>   
+                     }
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Ürün Açıklaması</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-payments" role="tab" aria-controls="pills-payments" aria-selected="false">Ödeme Yöntemi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-comment-tab" data-toggle="pill" href="#pills-comment" role="tab" aria-controls="pills-comment" aria-selected="false">Yorumlar</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade active show" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                        <p>
+                            • İşlemci: Intel® Core™ i7-9750H
+                            • İşletim Sistemi: Windows 10 Home Advanced
+                            • Ekran: 15.6" FHD (1920*1080), 60Hz 72%NTSC Thin Bezel, 100%sRGB
+                            • Chipset: Intel HM370
+                            • Ekran Kartı: RTX 2060 ,GDDR6 6GB
+                            • Hafıza: DDR IV 8GB*2 (2666MHz)
+                            • Hafıza yuvası: 2 Slot
+                            • Maksimum Hafıza: Max 64GB
+                            • HDD 512GB NVMe PCIe SSD
+                            • Ön Kamera: HD type (30fps@720p)
+                            • Klavye: "Backlight Keyboard (Single-Color, White) Finger Print Touchpad"
+                            • Kablolu Bağlantı: QUALCOMM QCA8171
+                            • Kablosuz Bağlantı: Intel Wireless-AC 9560 (2x2)
+                            • Bluetooth: BT5
+                            • Ses: 2x 2W
+                            • Pil: 4cells , Li-Polymer, 82Whr
+                            • Güç Adaptörü: 180W adaptör
+                            • Boyutlar: 357.7 x 247.7 x 17.9 mm
+                            • Ağırlık: 1.88kg
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-payments" role="tabpanel" aria-labelledby="pills-payments-tab">
+                        <p>•MasterCard<br />
+                           •Visa</p>
+                    </div>
+                    <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+                        <p>Hız, tasarım, depolama ve performans bir arada. Her alanda kullanabileceğiniz müthiş bir bilgisayar. Bu fiyat aralığında bir oyuncu laptopu alacaksanız mutlaka tavsiye ederim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@using SampleEcommerce.MvcWeb.Models
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4" style="text-align:center;"><b>Herkes için <i>sepet sepet</i> mutluluk burada...</b></h1><br />
+
+        <div class="left">
+            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            <img src="~/theme/img/hakkimda.jpg" style="width:200px" />
+        </div>
+
+        <div align="right">
+            <img src="~/theme/img/kargo1.png" style="width:350px" />
+        </div>
+
+
+        @*<hr class="my-4">*@
+        @*<h4 style="text-align-last:end;">Süper Fiyatlar Seni Bekliyor...</h4>*@
+    </div>
+</div>
+
+
+
+
+<div class="container pb-5">
+
+    @Html.Partial("_ProductList", Model)
+
+</div>
+
+
+
+
+
+
+
+

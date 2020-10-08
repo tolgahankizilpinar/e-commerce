@@ -1,0 +1,26 @@
+﻿@model SampleEcommerce.MvcWeb.Models.Cart
+
+<style>
+
+    #cart {
+        color: white
+    }
+</style>
+
+
+<ul id="cart" class="navbar-nav my-2 my-lg-0">
+
+    <li id="cart" class="nav-item active">
+        <a class="nav-link" href="/Cart">
+            <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+            (@Model.CartLines.Count)
+        </a>
+    </li>
+
+</ul>
+
+
+
+
+
+     

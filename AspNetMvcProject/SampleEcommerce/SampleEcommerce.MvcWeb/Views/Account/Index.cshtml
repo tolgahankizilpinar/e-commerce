@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<SampleEcommerce.MvcWeb.Models.UserOrderModel>
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Bilgileriniz</h2>
+            <hr />
+
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Sipariş Numarası</th>
+                        <th>Sipariş Tarihi</th>
+                        <th>Toplam Tutar</th>
+                        <th>Sipariş Durumu</th>
+                        <th style="width:12%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.OrderNumber</td>
+                            <td>@item.OrderDate.ToString()</td>
+                            <td>₺ @item.Total</td>
+                            <td>@item.OrderState</td>
+                            <td>
+                                @Html.ActionLink("Sipariş Detay", "Details", new { id = @item.Id }, new { @class = "btn btn-primary btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />

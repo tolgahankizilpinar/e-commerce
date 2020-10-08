@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<SampleEcommerce.MvcWeb.Entity.Category>
+
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<ul class="list-group">
+    <a href="/Home/List" class="list-group-item">
+        <i class="fas fa-angle-double-right" style="font-size: 15px;"></i>
+        Tüm Kategoriler
+    </a>
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item active">
+                    <i class="fas fa-angle-double-right" style="font-size: 15px;"></i>
+                    @item.Name
+                </a>
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item">
+                    <i class="fas fa-angle-double-right" style="font-size: 15px;"></i>
+                    @item.Name
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item">
+                <i class="fas fa-angle-double-right" style="font-size: 15px;"></i>
+                @item.Name
+            </a>
+        }
+    }
+
+</ul>
+

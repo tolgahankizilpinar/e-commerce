@@ -1,0 +1,28 @@
+﻿@using SampleEcommerce.MvcWeb.Models
+@model IEnumerable<ProductModel>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-3" style="height:550px;">
+            <div class="card">
+                <img src="~/theme/img/@item.Image" class="card-img-top" alt="@item.Name">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="/Home/Details/@item.Id">@item.Name</a>
+                    </h4>
+                    <p class="card-text pt-2" style="font-size:13px;height:50px;">@item.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted" style="color:#414141; font-size:17px; font-weight:700;">₺ @item.Price</small>
+                    <a href="/Home/Details/@item.Id" class="btn btn-warning btn-sm float-right">
+                        <i class="fas fa-search" style="font-size: 15px;"></i>
+                        Ürünü İncele
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
